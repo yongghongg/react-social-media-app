@@ -7,10 +7,11 @@ const keys = require('../../config/key');
 const passport = require('passport');
 
 // Load User Model
-const User = require('../models/User');
+const User = require('../../models/User');
 
 // Load User Validation
 const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 // @route   GET api/users/test
 // @desc    Tests users route
@@ -71,6 +72,15 @@ router.post('/register', (req, res) => {
 // @desc    Login users / Returning Jason Web Tokens
 // @access  Public
 router.post('/login', (req, res) => {
+  const {
+    err,
+    isValid
+  } = validateLoginInput(req.body);
+  // Check validation
+  if (!isValid) {
+    return res.status(400).json(err);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
@@ -81,8 +91,9 @@ router.post('/login', (req, res) => {
     .then(user => {
       // check for user
       if (!user) {
+        err.email = 'User not found'
         return res.status(404).json({
-          email: 'User not found'
+          err
         });
       }
       // check password
@@ -106,8 +117,9 @@ router.post('/login', (req, res) => {
             });
 
           } else {
+            err.password = 'Password incorrect';
             return res.status(400).json({
-              password: 'Password incorrect'
+              err
             });
           }
         })
