@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../action/authAction";
-import classnames from "classnames";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 class Login extends Component {
   constructor() {
@@ -60,41 +60,26 @@ class Login extends Component {
                 account
               </p>
               <form noValidate className="form" onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": err.email,
-                    })}
-                    placeholder="Email Address"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  />
-                  {err.email && (
-                    <div className="invalid-feedback">{err.email}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": err.password,
-                    })}
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                    minLength="6"
-                  />
-                  {err.password && (
-                    <div className="invalid-feedback">{err.password}</div>
-                  )}
-                </div>
+                <TextFieldGroup
+                  placeholder="Email Address"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  err={err.email}
+                  type="email"
+                />
+                <TextFieldGroup
+                  placeholder="Password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  err={err.password}
+                  type="password"
+                />
                 <input
                   type="submit"
                   className="btn btn-info btn-block mt-4"
-                  value="Register"
+                  value="Submit"
                 />
               </form>
             </div>
