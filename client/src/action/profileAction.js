@@ -15,6 +15,14 @@ export const getCurrentProfile = () => (dispatch) => {
     .catch((err) => dispatch({ type: GET_PROFILE, payload: {} })); // if there's no profile, we dont want an error because there's nothing with that, we just want to render dashboard differently when there's no profile
 };
 
+// Create profile
+export const createProfile = (profileData, history) => (dispatch) => {
+  axios
+    .post("/api/profile", profileData)
+    .then((res) => history.push("/dashboard")) // redirect to dashboard after creating profile
+    .catch((err) => dispatch({ type: GET_ERRORS, payload: err.response.data }));
+};
+
 // Profile loading
 export const setProfileLoading = () => {
   return {
