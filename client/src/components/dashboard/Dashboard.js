@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../action/profileAction";
 import Spinner from "../common/Spinner";
 import { Link } from "react-router-dom";
-import ProfileAction from "./ProfileAction";
+import ProfileAction from "./ProfileActions";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -33,6 +33,8 @@ class Dashboard extends Component {
             {/* allow user to edit profile and add edu & exp */}
             <ProfileAction />
             {/* TODO: exp & edu */}
+
+            {/* Delete account */}
             <div style={{ marginBottom: "60px" }}>
               <button
                 onClick={this.handleDeleteClick.bind(this)}
