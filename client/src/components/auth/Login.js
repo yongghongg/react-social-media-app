@@ -26,9 +26,9 @@ class Login extends Component {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
-
     if (nextProps.err) {
       this.setState({ err: nextProps.err });
+      console.log(nextProps.err);
     }
   }
 
@@ -48,7 +48,6 @@ class Login extends Component {
 
   render() {
     const { err } = this.state;
-
     return (
       <div className="login">
         <div className="container">
