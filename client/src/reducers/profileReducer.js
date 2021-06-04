@@ -10,7 +10,7 @@ const initState = {
   loading: false,
 };
 
-export default function (state = initState, action) {
+export default function profileReducer(state = initState, action) {
   switch (action.type) {
     case PROFILE_LOADING:
       return {

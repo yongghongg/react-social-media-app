@@ -25,7 +25,6 @@ class CreateProfile extends Component {
       facebook: "",
       linkedin: "",
       instagram: "",
-      skills: "",
       githubusername: "",
       bio: "",
       err: {},
@@ -59,7 +58,6 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       linkedin: this.state.linkedin,
       instagram: this.state.instagram,
-      skills: this.state.skills,
       githubusername: this.state.githubusername,
       bio: this.state.bio,
     };
