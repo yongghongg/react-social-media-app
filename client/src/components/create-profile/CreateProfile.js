@@ -7,7 +7,7 @@ import SelectListGroup from "../common/SelectListGroup";
 import InputGroup from "../common/InputGroup";
 import { withRouter } from "react-router-dom";
 
-import { createProfile } from "../../action/profileAction";
+import { createProfile } from "../../action/profileActions";
 
 class CreateProfile extends Component {
   constructor(props) {

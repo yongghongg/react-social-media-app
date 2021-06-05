@@ -8,7 +8,7 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectListGroup from "../common/SelectListGroup";
 import InputGroup from "../common/InputGroup";
 import { withRouter, Link } from "react-router-dom";
-import { createProfile, getCurrentProfile } from "../../action/profileAction";
+import { createProfile, getCurrentProfile } from "../../action/profileActions";
 import isEmpty from "../../validation/is-empty";
 
 class CreateProfile extends Component {
