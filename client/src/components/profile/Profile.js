@@ -18,6 +18,12 @@ class Profile extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push("./not-found");
+    }
+  }
+
   render() {
     const { profile, loading } = this.props.profile;
     let profileContent;
@@ -35,9 +41,17 @@ class Profile extends Component {
             <div className="col-md-6" />
           </div>
           <ProfileHeader profile={profile} />
-          <ProfileAbout />
-          <ProfileExpEdu />
-          <ProfileGitHub />
+          <ProfileAbout profile={profile} />
+          <ProfileExpEdu
+            education={profile.education}
+            experience={profile.experience}
+          />
+          {profile.githubusername ? (
+            <ProfileGitHub
+              username={profile.githubusername}
+              user={profile.user}
+            />
+          ) : null}
         </div>
       );
     }
